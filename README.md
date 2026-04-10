@@ -94,3 +94,5 @@ const BASE_URL = "http://localhost:8080/api/restaurants";
 
 ✨ Built as part of a full-stack learning project
 ![alt text](image.png)
+
+![alt text](image-1.png)
