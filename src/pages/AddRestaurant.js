@@ -13,10 +13,7 @@ function AddRestaurant() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value,
-    });
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
@@ -27,67 +24,65 @@ function AddRestaurant() {
         alert("Restaurant Added Successfully!");
         navigate("/");
       })
-      .catch((err) => {
-        console.log(err);
-        alert("Error adding restaurant");
-      });
+      .catch(() => alert("Error adding restaurant"));
   };
 
   return (
-  <div style={{ display: "flex", justifyContent: "center", marginTop: "40px" }}>
-    
-    {/* 🔥 CARD CONTAINER */}
-    <div className="card" style={{ padding: "25px", width: "400px" }}>
-      
-      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
-        ➕ Add Restaurant
-      </h2>
+    <div className="add-page">
 
-      {/* 🔥 FORM */}
-      <form onSubmit={handleSubmit} className="form">
+      <div className="form-card">
 
-        <input
-          type="text"
-          name="name"
-          value={form.name}
-          onChange={handleChange}
-          placeholder="Restaurant Name"
-        />
+        <h2 className="title">🍽 Add Restaurant</h2>
+        <p className="subtitle">Create a new restaurant listing</p>
 
-        <input
-          type="text"
-          name="address"
-          value={form.address}
-          onChange={handleChange}
-          placeholder="Address"
-        />
+        <form onSubmit={handleSubmit} className="form">
 
-        <input
-          type="text"
-          name="cuisine"
-          value={form.cuisine}
-          onChange={handleChange}
-          placeholder="Cuisine (e.g., Indian, Chinese)"
-        />
+          <input
+            name="name"
+            value={form.name}
+            onChange={handleChange}
+            placeholder="Restaurant Name"
+            required
+          />
 
-        <input
-          type="number"
-          name="rating"
-          value={form.rating}
-          onChange={handleChange}
-          placeholder="Rating (1-5)"
-        />
+          <input
+            name="address"
+            value={form.address}
+            onChange={handleChange}
+            placeholder="Address"
+            required
+          />
 
-        {/* 🔥 BUTTON */}
-        <button className="btn btn-green" type="submit">
-          Add Restaurant
-        </button>
+          <input
+            name="cuisine"
+            value={form.cuisine}
+            onChange={handleChange}
+            placeholder="Cuisine (Indian, Chinese...)"
+            required
+          />
 
-      </form>
+          <input
+            type="number"
+            name="rating"
+            value={form.rating}
+            onChange={handleChange}
+            placeholder="Rating (1 - 5)"
+            min="1"
+            max="5"
+            step="0.1"
+            required
+          />
+
+          <button type="submit" className="submit-btn">
+            ➕ Add Restaurant
+          </button>
+
+        </form>
+
+      </div>
+
     </div>
-
-  </div>
-);
+  );
 }
 
 export default AddRestaurant;

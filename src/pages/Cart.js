@@ -1,25 +1,25 @@
 import React from "react";
 
-function Cart({ cart }) {
+function Cart({ cart, removeFromCart }) {
   return (
-    <div style={{ padding: "20px" }}>
-  <h2>🛒 Your Cart</h2>
+    <div className="page">
+      <h2>🛒 Cart</h2>
 
-  {cart.length === 0 ? (
-    <p>No items in cart</p>
-  ) : (
-    <div className="grid">
-      {cart.map((item, index) => (
-        <div key={index} className="card">
-          <div style={{ padding: "10px" }}>
-            <h3>{item.name}</h3>
-            <p>{item.address}</p>
+      {cart.length === 0 ? (
+        <p>No items</p>
+      ) : (
+        cart.map((item, i) => (
+          <div className="card cart-item" key={i}>
+            <div>
+              <h4>{item.name}</h4>
+              <p>₹{item.price}</p>
+            </div>
+
+            <button onClick={() => removeFromCart(i)}>Remove</button>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
-  )}
-</div>
   );
 }
 

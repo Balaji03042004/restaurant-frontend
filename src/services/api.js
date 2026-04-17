@@ -5,7 +5,12 @@ const BASE_URL = "http://localhost:8080/api/restaurants";
 export const getRestaurants = () => {
   return axios.get(BASE_URL);
 };
-
+export const updateRestaurantLike = (id, updatedData) => {
+  return axios.put(`${BASE_URL}/${id}`, updatedData);
+};
+export const getMenuByRestaurant = (restaurantId) => {
+  return axios.get(`http://localhost:8080/api/menu/${restaurantId}`);
+};
 export const getRestaurantById = (id) => {
   return axios.get(`http://localhost:8080/api/restaurants/${id}`);
 };

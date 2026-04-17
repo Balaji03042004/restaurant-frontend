@@ -1,121 +1,260 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f8f9fa;
+  font-family: Arial;
+  background: #f4f4f4;
 }
 
-/* Navbar */
+/* NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  background: linear-gradient(90deg, #ff4d4f, #ff7a45);
-  padding: 15px 40px;
+  padding: 15px;
+  background: #ff4d4f;
   color: white;
-  border-radius: 0 0 12px 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* 🔥 LOGO */
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-/* 🔗 NAV LINKS */
-.nav-links {
-  display: flex;
-  gap: 25px;
-  align-items: center;
 }
 
 .nav-links a {
-  text-decoration: none;
   color: white;
-  font-weight: 500;
-  position: relative;
-  transition: 0.3s;
+  margin-left: 15px;
+  text-decoration: none;
 }
 
-/* 🔥 UNDERLINE HOVER EFFECT */
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  background: white;
-  bottom: -4px;
-  left: 0;
-  transition: 0.3s;
+/* PAGE WRAPPER */
+.page {
+  padding: 20px;
 }
 
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* 🛒 CART BADGE */
-.cart-badge {
-  background: white;
-  color: #ff4d4f;
-  padding: 2px 8px;
-  border-radius: 50%;
-  font-size: 12px;
-  margin-left: 5px;
-  font-weight: bold;
-}
-
-/* Grid */
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 15px;
 }
 
-/* Card */
+/* CARD */
 .card {
   background: white;
+  padding: 15px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transform: scale(1.02);
 }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+
+/* SEARCH */
+.search {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
 }
-/* Buttons */
-.btn {
-  padding: 8px 12px;
-  border-radius: 6px;
+
+/* FILTER BUTTONS */
+.filters button {
+  margin: 5px;
+  padding: 6px 12px;
   border: none;
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 13px;
 }
 
-.btn-green { background: #28a745; color: white; }
-.btn-blue { background: #007bff; color: white; }
-.btn-red { background: #dc3545; color: white; }
-
-.btn:hover {
-  opacity: 0.9;
+.active-filter {
+  background: #ff4d4f;
+  color: white;
 }
 
-/* Form */
-.form {
+/* BUTTON */
+.btn {
+  background: green;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* CART BADGE */
+.cart-badge {
+  background: white;
+  color: red;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* ADD PAGE */
+.add-page {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  max-width: 400px;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.form-card {
+  width: 420px;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: gray;
+  margin-bottom: 20px;
 }
 
 .form input {
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+}
+
+.form input:focus {
+  border-color: #ff4d4f;
+}
+
+/* SUBMIT BUTTON */
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #ff4d4f, #ff7a45);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ========================= */
+/* 🍽 MENU PAGE (SWIGGY STYLE)
+/* ========================= */
+
+.menu-page {
+  padding: 15px;
+  background: #f6f6f6;
+}
+
+/* STICKY HEADER */
+.sticky-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  z-index: 100;
+}
+
+/* CATEGORY BAR */
+.category-bar {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+/* CATEGORY CHIP */
+.chip {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.active-chip {
+  background: #ff4d4f;
+  color: white;
+  border: none;
+}
+
+/* MENU LIST */
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* MENU ITEM CARD (FIXED + CLEAN) */
+.menu-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* ADD BUTTON */
+.add-btn {
+  background: green;
+  color: white;
+  border: none;
+  padding: 6px 14px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+/* QUANTITY CONTROLS */
+.qty-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-box button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: #ff4d4f;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* 🛒 STICKY CART BAR */
+.sticky-cart-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1f1f1f;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  z-index: 999;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+}
+
+/* VIEW CART BUTTON */
+.view-cart-btn {
+  background: #00c853;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.view-cart-btn:hover {
+  transform: scale(1.05);
 }

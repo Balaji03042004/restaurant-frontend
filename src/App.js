@@ -10,20 +10,32 @@ import EditRestaurant from "./pages/EditRestaurant";
 import "./App.css";
 
 function App() {
-  // 🛒 Cart state
   const [cart, setCart] = useState([]);
 
-  // ➕ Add to cart
-  const addToCart = (restaurant) => {
-    setCart([...cart, restaurant]);
+  // ➕ ADD TO CART
+  const addToCart = (item) => {
+    setCart((prev) => [...prev, item]);
   };
+
+  // ❌ REMOVE
+  const removeFromCart = (index) => {
+    setCart((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  // 🧮 TOTAL ITEMS
+  const totalItems = cart.length;
+
+  // 💰 TOTAL PRICE
+  const totalPrice = cart.reduce(
+    (sum, item) => sum + (item.price || 0),
+    0
+  );
 
   return (
     <Router>
-      <div style={{ padding: "20px" }}>
-        <h1>Restaurant App</h1>
+      <div className="app-container">
 
-        {/* 🔥 NAVBAR */}
+        {/* NAVBAR */}
         <div className="navbar">
           <div className="logo">🍽 Foodie</div>
 
@@ -32,19 +44,44 @@ function App() {
             <Link to="/add">Add</Link>
 
             <Link to="/cart">
-              Cart <span className="cart-badge">{cart.length}</span>
+              Cart <span className="cart-badge">{totalItems}</span>
             </Link>
           </div>
         </div>
 
-        {/* 🚀 ROUTES */}
+        {/* ROUTES */}
         <Routes>
           <Route path="/" element={<Home addToCart={addToCart} />} />
           <Route path="/add" element={<AddRestaurant />} />
-          <Route path="/cart" element={<Cart cart={cart} />} />
-          <Route path="/restaurant/:id" element={<RestaurantDetails />} />
+          <Route
+            path="/cart"
+            element={<Cart cart={cart} removeFromCart={removeFromCart} />}
+          />
+          <Route
+            path="/restaurant/:id"
+            element={<RestaurantDetails addToCart={addToCart} />}
+          />
           <Route path="/edit/:id" element={<EditRestaurant />} />
         </Routes>
+
+        {/* 🛒 STICKY CART BAR */}
+        {cart.length > 0 && (
+          <div className="sticky-cart-bar">
+            <div>
+              <b>{totalItems} items</b>
+              <p style={{ margin: 0, fontSize: "12px" }}>
+                ₹{totalPrice} total
+              </p>
+            </div>
+
+            <Link to="/cart">
+              <button className="view-cart-btn">
+                View Cart →
+              </button>
+            </Link>
+          </div>
+        )}
+
       </div>
     </Router>
   );
