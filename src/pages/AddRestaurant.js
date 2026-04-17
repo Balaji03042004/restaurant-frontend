@@ -25,7 +25,7 @@ function AddRestaurant() {
     addRestaurant(form)
       .then(() => {
         alert("Restaurant Added Successfully!");
-        navigate("/"); // go back to home
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -34,54 +34,60 @@ function AddRestaurant() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Add Restaurant</h2>
+  <div style={{ display: "flex", justifyContent: "center", marginTop: "40px" }}>
+    
+    {/* 🔥 CARD CONTAINER */}
+    <div className="card" style={{ padding: "25px", width: "400px" }}>
+      
+      <h2 style={{ textAlign: "center", marginBottom: "20px" }}>
+        ➕ Add Restaurant
+      </h2>
 
-      <form onSubmit={handleSubmit}>
+      {/* 🔥 FORM */}
+      <form onSubmit={handleSubmit} className="form">
+
         <input
           type="text"
           name="name"
-          placeholder="Name"
           value={form.name}
           onChange={handleChange}
-          required
+          placeholder="Restaurant Name"
         />
-        <br /><br />
 
         <input
           type="text"
           name="address"
-          placeholder="Address"
           value={form.address}
           onChange={handleChange}
-          required
+          placeholder="Address"
         />
-        <br /><br />
 
         <input
           type="text"
           name="cuisine"
-          placeholder="Cuisine"
           value={form.cuisine}
           onChange={handleChange}
-          required
+          placeholder="Cuisine (e.g., Indian, Chinese)"
         />
-        <br /><br />
 
         <input
           type="number"
           name="rating"
-          placeholder="Rating"
           value={form.rating}
           onChange={handleChange}
-          required
+          placeholder="Rating (1-5)"
         />
-        <br /><br />
 
-        <button type="submit">Add Restaurant</button>
+        {/* 🔥 BUTTON */}
+        <button className="btn btn-green" type="submit">
+          Add Restaurant
+        </button>
+
       </form>
     </div>
-  );
+
+  </div>
+);
 }
 
 export default AddRestaurant;
