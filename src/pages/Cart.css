@@ -1,0 +1,136 @@
+.cart-page {
+  display: flex;
+  gap: 25px;
+  padding: 30px;
+  background: #f1f3f6;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* LEFT SIDE */
+.cart-left {
+  flex: 2;
+}
+
+.cart-header h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.cart-header p {
+  color: gray;
+  margin-top: 5px;
+}
+
+/* FOOD CARD (Swiggy style) */
+.food-card {
+  background: #fff;
+  padding: 18px;
+  margin-top: 15px;
+  border-radius: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  transition: 0.2s ease;
+}
+
+.food-card:hover {
+  transform: scale(1.01);
+}
+
+.food-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.price {
+  color: #444;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+.remove-btn {
+  background: transparent;
+  border: 1px solid #ff4d4f;
+  color: #ff4d4f;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.remove-btn:hover {
+  background: #ff4d4f;
+  color: white;
+}
+
+/* RIGHT SIDE - STICKY SUMMARY */
+.cart-right {
+  flex: 1;
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.summary-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.summary-card h3 {
+  margin-bottom: 15px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: #555;
+}
+
+.free {
+  color: green;
+  font-weight: 600;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff5200, #ff7a00);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.checkout-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.note {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+  color: gray;
+}
+
+/* EMPTY STATE */
+.empty-cart {
+  margin-top: 40px;
+  font-size: 18px;
+  color: gray;
+}

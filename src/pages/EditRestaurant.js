@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getRestaurantById, updateRestaurant } from "../services/api";
+import { getRestaurantById, updateRestaurant } from "../services/restaurantService";
 
 function EditRestaurant() {
   const { id } = useParams();

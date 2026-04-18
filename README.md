@@ -99,3 +99,6 @@ const BASE_URL = "http://localhost:8080/api/restaurants";
 
 * New UI Of Restaurant Application
 ![alt text](image-2.png)
+
+* New Login UI Developed
+![alt text](image-3.png)

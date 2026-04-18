@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getRestaurants, updateRestaurantLike } from "../services/api";
+import { getRestaurants, updateRestaurantLike } from "../services/restaurantService";
 import RestaurantCard from "../components/RestaurantCard";
 
 function Home({ addToCart }) {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addRestaurant } from "../services/api";
+import { addRestaurant } from "../services/restaurantService";
 import { useNavigate } from "react-router-dom";
 
 function AddRestaurant() {

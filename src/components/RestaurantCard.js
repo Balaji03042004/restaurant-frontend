@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { deleteRestaurant } from "../services/api";
+import { deleteRestaurant } from "../services/restaurantService";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 import food1 from "../assets/food1.jpg";

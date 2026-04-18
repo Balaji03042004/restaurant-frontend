@@ -258,3 +258,176 @@ body {
 .view-cart-btn:hover {
   transform: scale(1.05);
 }
+
+.body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: #f4f4f4;
+}
+
+/* ========================= */
+/* NAVBAR (clean upgrade)
+/* ========================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(90deg, #ff4d4f, #ff7a45);
+  color: white;
+  font-weight: 500;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+/* ========================= */
+/* LOGIN PAGE (PRO LEVEL UI)
+/* ========================= */
+
+.login-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at top, #ff6b6b, #ff9966);
+}
+
+.login-card {
+  display: flex;
+  width: 800px;
+  height: 450px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+/* LEFT SIDE */
+.login-brand {
+  flex: 1;
+  background: linear-gradient(135deg, #ff4d4f, #ff7a45);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+}
+
+.login-brand h1 {
+  font-size: 36px;
+  margin: 0;
+}
+
+.login-brand p {
+  margin-top: 10px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* RIGHT SIDE */
+.login-form {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form h2 {
+  margin: 0;
+}
+
+.subtitle {
+  color: gray;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* INPUTS */
+.login-form input {
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.2s;
+}
+
+.login-form input:focus {
+  border-color: #ff4d4f;
+  box-shadow: 0 0 5px rgba(255,77,79,0.3);
+}
+
+/* ERROR */
+.error-box {
+  background: #ffe5e5;
+  color: #d8000c;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* PRIMARY BUTTON */
+.primary-btn {
+  background: linear-gradient(90deg, #ff4d4f, #ff7a45);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  transform: scale(1.03);
+}
+
+/* DIVIDER */
+.divider {
+  text-align: center;
+  margin: 15px 0;
+  font-size: 12px;
+  color: gray;
+}
+
+/* GOOGLE BUTTON */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: white;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.google-btn:hover {
+  background: #f5f5f5;
+}
+
+.google-btn img {
+  width: 20px;
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+@media (max-width: 850px) {
+  .login-card {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+
+  .login-brand {
+    text-align: center;
+  }
+}

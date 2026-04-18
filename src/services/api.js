@@ -1,27 +1,29 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8080/api/restaurants";
+const API = axios.create({
+  baseURL: "http://localhost:8080",
+});
 
-export const getRestaurants = () => {
-  return axios.get(BASE_URL);
-};
-export const updateRestaurantLike = (id, updatedData) => {
-  return axios.put(`${BASE_URL}/${id}`, updatedData);
-};
-export const getMenuByRestaurant = (restaurantId) => {
-  return axios.get(`http://localhost:8080/api/menu/${restaurantId}`);
-};
-export const getRestaurantById = (id) => {
-  return axios.get(`http://localhost:8080/api/restaurants/${id}`);
-};
-export const deleteRestaurant = (id) => {
-  return axios.delete(`${BASE_URL}/${id}`);
-};
+API.interceptors.request.use((req) => {
+  const token = localStorage.getItem("token");
 
-export const updateRestaurant = (id, restaurant) => {
-  return axios.put(`${BASE_URL}/${id}`, restaurant);
-};
+  if (token) {
+    req.headers.Authorization = `Bearer ${token}`;
+  }
 
-export const addRestaurant = (restaurant) => {
-  return axios.post(BASE_URL, restaurant);
-};
+  return req;
+});
+
+API.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      alert("Session expired. Please login again.");
+      localStorage.removeItem("token");
+      window.location.href = "/login";
+    }
+    return Promise.reject(error);
+  }
+);
+
+export default API;
