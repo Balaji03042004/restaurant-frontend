@@ -5,9 +5,12 @@ import RestaurantCard from "../components/RestaurantCard";
 function Home({ addToCart }) {
   const [restaurants, setRestaurants] = useState([]);
   const [search, setSearch] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    getRestaurants().then((res) => setRestaurants(res.data));
+    getRestaurants()
+      .then((res) => setRestaurants(res.data))
+      .catch(() => setError("Failed to load restaurants. Please try again."));
   }, []);
 
   const handleDeleteUI = (id) => {
@@ -34,6 +37,8 @@ function Home({ addToCart }) {
 
   return (
     <div className="page">
+
+      {error && <p style={{ color: "red", padding: "10px" }}>{error}</p>}
 
       <input
         className="search"

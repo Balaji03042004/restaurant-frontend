@@ -8,13 +8,15 @@ function EditRestaurant() {
 
   const [restaurant, setRestaurant] = useState({
     name: "",
-    address: ""
+    address: "",
+    cuisine: "",
+    rating: "",
   });
 
   useEffect(() => {
     getRestaurantById(id)
       .then((res) => setRestaurant(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, [id]);
 
   const handleChange = (e) => {
@@ -32,7 +34,10 @@ function EditRestaurant() {
         alert("Updated successfully");
         navigate("/");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.error(err);
+        alert("Failed to update restaurant. Please try again.");
+      });
   };
 
   return (
@@ -42,6 +47,7 @@ function EditRestaurant() {
         value={restaurant.name}
         onChange={handleChange}
         placeholder="Name"
+        required
       />
 
       <input
@@ -49,6 +55,27 @@ function EditRestaurant() {
         value={restaurant.address}
         onChange={handleChange}
         placeholder="Address"
+        required
+      />
+
+      <input
+        name="cuisine"
+        value={restaurant.cuisine}
+        onChange={handleChange}
+        placeholder="Cuisine (Indian, Chinese...)"
+        required
+      />
+
+      <input
+        type="number"
+        name="rating"
+        value={restaurant.rating}
+        onChange={handleChange}
+        placeholder="Rating (1 - 5)"
+        min="1"
+        max="5"
+        step="0.1"
+        required
       />
 
       <button type="submit">Update</button>

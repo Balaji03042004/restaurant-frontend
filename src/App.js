@@ -13,13 +13,18 @@ import { AuthContext } from "./context/AuthContext";
 
 import "./App.css";
 
+// Defined outside App to avoid unnecessary remounts on every render
+const ProtectedRoute = ({ children }) => {
+  const { isAuthenticated } = useContext(AuthContext);
+  return isAuthenticated ? children : <Navigate to="/login" />;
+};
+
 function App() {
 
   const [cart, setCart] = useState([]);
 
   const { login, isAuthenticated, logout } = useContext(AuthContext);
 
-  // 🔥 GOOGLE AUTO LOGIN FIXED
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const token = params.get("token");
@@ -28,7 +33,7 @@ function App() {
       login(token);
       window.history.replaceState({}, document.title, "/");
     }
-  }, []);
+  }, [login]);
 
   const addToCart = (item) => {
     setCart((prev) => [...prev, item]);
@@ -44,11 +49,6 @@ function App() {
     (sum, item) => sum + (item.price || 0),
     0
   );
-
-  // 🔐 PROTECTED ROUTE COMPONENT
-  const ProtectedRoute = ({ children }) => {
-    return isAuthenticated ? children : <Navigate to="/login" />;
-  };
 
   return (
     <Router>

@@ -43,7 +43,7 @@ function RestaurantCard({
         alert("Deleted successfully");
         onDelete(id);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   return (

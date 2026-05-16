@@ -15,11 +15,11 @@ function RestaurantDetails({ addToCart }) {
   useEffect(() => {
     getRestaurantById(id)
       .then((res) => setRestaurant(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
 
     getMenuByRestaurant(id)
       .then((res) => setMenu(res.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   }, [id]);
 
   if (!restaurant) return <p style={{ padding: "20px" }}>Loading...</p>;
