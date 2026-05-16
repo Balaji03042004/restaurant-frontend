@@ -7,6 +7,10 @@ function Home({ addToCart }) {
   const [search, setSearch] = useState("");
   const [error, setError] = useState("");
 
+  const [aiInput, setAiInput] = useState("");
+  const [aiResult, setAiResult] = useState("");
+  const [loadingAi, setLoadingAi] = useState(false);
+
   useEffect(() => {
     getRestaurants()
       .then((res) => setRestaurants(res.data))
@@ -31,6 +35,27 @@ function Home({ addToCart }) {
     });
   };
 
+  const getAiRecommendation = async () => {
+    if (!aiInput.trim()) return;
+
+    setLoadingAi(true);
+    try {
+      const res = await fetch("http://localhost:8080/api/ai/recommend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "text/plain"
+        },
+        body: aiInput
+      });
+
+      const data = await res.text();
+      setAiResult(data);
+    } catch (err) {
+      setAiResult("Failed to get AI suggestions");
+    }
+    setLoadingAi(false);
+  };
+
   const filtered = restaurants.filter((r) =>
     r.name.toLowerCase().includes(search.toLowerCase())
   );
@@ -39,6 +64,31 @@ function Home({ addToCart }) {
     <div className="page">
 
       {error && <p style={{ color: "red", padding: "10px" }}>{error}</p>}
+
+
+            <div style={{ padding: "10px" }}>
+        <h3>🤖 AI Food Suggestions</h3>
+
+        <input
+          className="search"
+          placeholder="e.g. spicy chicken, veg dinner..."
+          value={aiInput}
+          onChange={(e) => setAiInput(e.target.value)}
+        />
+
+        <button onClick={getAiRecommendation} style={{ marginTop: "5px" }}>
+          Get Suggestions
+        </button>
+
+        {loadingAi && <p>Loading AI suggestions...</p>}
+
+        {aiResult && (
+          <div style={{ background: "#f5f5f5", padding: "10px", marginTop: "10px" }}>
+            <strong>Suggestions:</strong>
+            <pre>{aiResult}</pre>
+          </div>
+        )}
+        </div>
 
       <input
         className="search"
